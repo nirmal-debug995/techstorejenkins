@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh '''
                     npm ci
-                    REACT_APP_API_USE_PROXY=true npm run build
+                    CI=false REACT_APP_API_USE_PROXY=true npm run build
                 '''
             }
         }

@@ -5,12 +5,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build Frontend') {
             steps {
                 sh '''
@@ -23,6 +17,7 @@ pipeline {
         stage('Deploy Frontend') {
             steps {
                 sh '''
+                    sudo mkdir -p /var/www/fusion-app
                     sudo rm -rf /var/www/fusion-app/*
                     sudo cp -r build/* /var/www/fusion-app/
                 '''
